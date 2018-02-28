@@ -5,31 +5,43 @@ const Restaurant = require('../models/restaurant');
 /* GET home page. */
 router.route('/')
 	.get((req, res, next) => {
-	  Restaurant.find((error, restaurants) => {
-	  	if (error) {
-	  		next(error);
-	  	} else {
-	  		res.render('restaurants/index', { restaurants });
-	  	}
-	  })
-	})
-  .post((req, res, next) => {
-    const newRestaurant = {
-      name:        req.body.name,
-      description: req.body.description,
-    };
+		Restaurant.find((error, restaurants) => {
+			if (error) {
+				next(error);
+			} else {
+				res.render('restaurants/index', {
+					restaurants
+				});
+			}
+		})
+	});
 
-  	const restaurant = new Restaurant(newRestaurant);
+router.route('/restaurants')
+	.post((req, res, next) => {
+		let location = {
+			type: 'Point',
+			coordinates: [req.body.longitude, req.body.latitude]
+		};
 
-  	restaurant.save((error) => {
-  		if (error) {
-  			next(error);
-  		} else {
-  			res.redirect('/');
-  		}
-  	})
+		// Create a new Restaurant with location
+		const newRestaurant = {
+			name: req.body.name,
+			description: req.body.description,
+			location: location
+		};
+		const restaurant = new Restaurant(newRestaurant);
 
-  });
+		// Save the restaurant to the Database
+		restaurant.save((error) => {
+			if (error) {
+				console.log(error)
+			} else {
+				res.redirect('/');
+			}
+		})
+	});
+
+
 
 
 router.route('/new')
@@ -43,7 +55,9 @@ router.route('/:restaurant_id')
 			if (error) {
 				next(error);
 			} else {
-				res.render('restaurants/show', {restaurant});
+				res.render('restaurants/show', {
+					restaurant
+				});
 			}
 		})
 	})
@@ -52,15 +66,15 @@ router.route('/:restaurant_id')
 			if (error) {
 				next(error);
 			} else {
-				restaurant.name        = req.body.name;
+				restaurant.name = req.body.name;
 				restaurant.description = req.body.description;
 				restaurant.save((error) => {
-		  		if (error) {
-		  			next(error);
-		  		} else {
-		  			res.redirect('/');
-		  		}
-		  	})
+					if (error) {
+						next(error);
+					} else {
+						res.redirect('/');
+					}
+				})
 			}
 		})
 	});
@@ -71,20 +85,24 @@ router.route('/:restaurant_id/edit')
 			if (error) {
 				next(error);
 			} else {
-				res.render('restaurants/update', { restaurant });
+				res.render('restaurants/update', {
+					restaurant
+				});
 			}
 		})
 	});
 
 router.route('/:restaurant_id/delete')
 	.get((req, res, next) => {
-		Restaurant.remove({ _id: req.params.restaurant_id }, function(error, restaurant) {
-	    if (error) {
-	    	next(error)
-	    } else {
-	    	res.redirect('/')
-	    }
-    });
+		Restaurant.remove({
+			_id: req.params.restaurant_id
+		}, function(error, restaurant) {
+			if (error) {
+				next(error)
+			} else {
+				res.redirect('/')
+			}
+		});
 	});
 
 module.exports = router;
