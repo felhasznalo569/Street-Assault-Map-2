@@ -5,10 +5,35 @@ const Restaurant = require('../models/restaurant');
 /* GET home page. */
 router.route('/')
 	.get((req, res, next) => {
-		Restaurant.find((error, restaurants) => {
+		Restaurant.find((error, restaurantsDB) => {
 			if (error) {
 				next(error);
 			} else {
+				// console.log(restaurants);
+				// for(var i=0; i<restaurants.length; i++)
+				// {
+				// 	console.log(restaurants[i]._id);
+				// 	console.log(typeof restaurants[i]._id);
+				// 	console.log(restaurants[i]._id.toHexString());
+				// 	console.log(typeof restaurants[i]._id.toHexString());
+				// 	console.log("PRINTEK");
+				// }
+				// console.log("PRINTEK2");
+				// console.log(restaurants);
+
+				var restaurants = [];
+
+				for(var i=0; i<restaurantsDB.length; i++)
+				{
+					restaurants.push({
+						id: restaurantsDB[i]._id.toHexString(),
+						name: restaurantsDB[i].name,
+						description: restaurantsDB[i].description,
+						location: restaurantsDB[i].location
+					})
+				}
+				console.log("PRINTEK3");
+				console.log(restaurants);
 				res.render('restaurants/index', {
 					restaurants
 				});
