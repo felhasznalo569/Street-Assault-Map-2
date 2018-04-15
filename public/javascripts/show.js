@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var titleTag = document.getElementById('restaurantName');
+	var titleTag = document.getElementById('crimeName');
 	var url = 'http://localhost:3000/api/' + titleTag.dataset.id;
 
 	$.ajax({
@@ -12,10 +12,10 @@ $(document).ready(function(){
     }
   });
 
-  function printMapAndMarker(restaurant){
+  function printMapAndMarker(crime){
   	var position = {
-  	  lat: restaurant.location.coordinates[1], 
-  	  lng: restaurant.location.coordinates[0]
+  	  lat: crime.location.coordinates[1], 
+  	  lng: crime.location.coordinates[0]
   	};
   	
   	var map = new google.maps.Map(document.getElementById('map'), {
@@ -26,7 +26,7 @@ $(document).ready(function(){
   	var marker = new google.maps.Marker({
       position: position,
       map: map,
-      title: restaurant.name
+      title: crime.name
     });
   }
 });
