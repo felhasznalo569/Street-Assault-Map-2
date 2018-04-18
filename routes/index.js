@@ -74,6 +74,11 @@ router.route('/new')
 		res.render('crimes/new');
 	});
 
+router.route('/views/crimes/new')
+	.get((req, res, next) => {
+		res.render('crimes/new');
+	});
+
 router.route('/:crime_id')
 	.get((req, res, next) => {
 		Crime.findById(req.params.crime_id, (error, crime) => {
@@ -129,5 +134,10 @@ router.route('/:crime_id/delete')
 			}
 		});
 	});
+
+	router.route('/koa') 
+	  	.get((req, res, next) => {
+			res.render('crimes/koa');
+		});
 
 module.exports = router;

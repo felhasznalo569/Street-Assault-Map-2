@@ -3,29 +3,63 @@
   <head>
     <title>The Best Places on Earth</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="container">
-      </div>
-      <div class="info">
-        <h3>List all crimes</h3>
-        <a href="/new">Create new crime</a>
-        <ul>
-          <% crimes.forEach((crime) => { %>
-            <li>
-              <a href="/<%= crime.id%>">
-                <%= crime.name%><span><%= crime.description %></span>
-              </a>
-               |
-              <a href="/<%= crime.id%>/edit">Edit</a>
-               |
-              <a href="/<%= crime.id%>/delete">Delete</a>
-            </li>
-          <% }) %>
+    <div class=".container-fluid">
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Maptrocitas</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/new">Submit</a></li>
+          <li><a href="/koa">What is this?</a></li>
         </ul>
       </div>
+    </nav>
+
+    <div class=".container-fluid">
+
+      <!-- <div class="col-lg-2">
+        <div class=".container-fluid">
+
+          <div class="info">
+            <h3>List all crimes</h3>
+            <a href="/new">Create new crime</a>
+            <ul>
+              <% crimes.forEach((crime) => { %>
+                <li>
+                  <a href="/<%= crime.id%>">
+                    <%= crime.name%><span><%= crime.description %></span>
+                  </a>
+                   |
+                  <a href="/<%= crime.id%>/edit">Edit</a>
+                   |
+                  <a href="/<%= crime.id%>/delete">Delete</a>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-10">
+        <div class=".container-fluid">
+          <div id="map"></div>
+        </div>
+      </div> -->
+
+      <!-- commetn this out below and undo the comment above to have your original website and access to edit/delete -->
+      <div id="map"></div>
+
     </div>
-    <div id="map"></div>
+
+  </div>
   </body>
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbBJPvYIaR5ozIx_0-uWiGeO9cK4IxHww">
