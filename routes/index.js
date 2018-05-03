@@ -66,6 +66,10 @@ router.route('/crimes')
 		})
 	});
 
+	router.route('/koa') 
+	  	.get((req, res, next) => {
+			res.render('crimes/koa');
+		});
 
 
 
@@ -135,9 +139,5 @@ router.route('/:crime_id/delete')
 		});
 	});
 
-	router.route('/koa') 
-	  	.get((req, res, next) => {
-			res.render('crimes/koa');
-		});
 
 module.exports = router;

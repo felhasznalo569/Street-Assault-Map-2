@@ -23,7 +23,17 @@ let markers = [];
       lat: crime.location.coordinates[1],
       lng: crime.location.coordinates[0]
     };
-    var pin = new google.maps.Marker({ position, map, title  });
+
+    let icon ='https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+    let label = title
+    if(title = "abcd")
+    {
+    let icon ='https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+    let label = "Mukodik"
+    }
+
+    
+    var pin = new google.maps.Marker({ position, map, title, label, icon  });
 
       var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
