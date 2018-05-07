@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Best Places on Earth</title>
+    <title>Street Assault Map</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -36,7 +36,11 @@
     <form method="POST" action="/crimes">
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" class="form-control" name="name" placeholder="Name" id="name">
+
+        <select class="form-control" name="name" id="name">
+            <option value="Robbery">Robbery</option>
+            <option value="Violence">Violence</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="description">Descriptcion: </label>

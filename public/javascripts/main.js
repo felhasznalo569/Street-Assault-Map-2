@@ -6,7 +6,7 @@ $(document).ready(function(){
 
   
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
+    zoom: 15,
     center: ironhackBCN
   });
 
@@ -24,23 +24,28 @@ let markers = [];
       lng: crime.location.coordinates[0]
     };
 
-    let icon ='https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-    let label = title
-    if(title = "abcd")
+    var icon;
+
+
+    if(title == 'Violence')
     {
-    let icon ='https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-    let label = "Mukodik"
+    icon ='Violence.png'
     }
 
-    
-    var pin = new google.maps.Marker({ position, map, title, label, icon  });
+    if(title == 'Robbery')
+    {
+    icon ='Robbery.png'
+    }
+
+
+    var pin = new google.maps.Marker({ position, map, title, icon  });
 
       var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
-            crime.name +
+            crime.name.bold() +
             '<div id="bodyContent">'+
-            'leiras: '+ crime.description +
+            'Description: '+ crime.description +
             '</div>'+
             '</div>';
 

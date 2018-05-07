@@ -32,8 +32,6 @@ router.route('/')
 						location: crimesDB[i].location
 					})
 				}
-				console.log("PRINTEK3");
-				console.log(crimes);
 				res.render('crimes/index', {
 					crimes
 				});
