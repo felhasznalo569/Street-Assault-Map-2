@@ -4,6 +4,7 @@ const Schema       = mongoose.Schema;
 const crimeSchema = new Schema({
   name: String,
   description: String,
+  when: Date,
   location: { type: { type: String }, coordinates: [Number] }
 });
 crimeSchema.index({ location: '2dsphere' });

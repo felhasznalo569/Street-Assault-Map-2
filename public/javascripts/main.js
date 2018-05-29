@@ -1,19 +1,15 @@
 $(document).ready(function(){
-  var ironhackBCN = {
+  var mapcenter = {
     lat: 47.49, 
     lng: 19.04
   };
-
   
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
-    center: ironhackBCN
+    center: mapcenter
   });
 
-  var center = {
-    lat: undefined,
-    lng: undefined
-  };  
+ 
 
 
 let markers = [];
@@ -23,6 +19,8 @@ let markers = [];
       lat: crime.location.coordinates[1],
       lng: crime.location.coordinates[0]
     };
+    let wherecrime = crime.when
+    console.log(crime.when)
 
     var icon;
 
@@ -38,6 +36,7 @@ let markers = [];
     }
 
 
+
     var pin = new google.maps.Marker({ position, map, title, icon  });
 
       var contentString = '<div id="content">'+
@@ -45,7 +44,7 @@ let markers = [];
             '</div>'+
             crime.name.bold() +
             '<div id="bodyContent">'+
-            'Description: '+ crime.description +
+            'Description: '+ crime.description + '\n' + wherecrime +
             '</div>'+
             '</div>';
 
