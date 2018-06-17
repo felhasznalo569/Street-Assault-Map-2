@@ -36,6 +36,8 @@ $(document).ready(function() {
 		var latLngUpdate = new google.maps.LatLng(document.getElementById("latitude").value, document.getElementById("longitude").value);
 
 		marker.setPosition(latLngUpdate);
+
+		map.setCenter(latLngUpdate);
 	}
 	
   var geocoder = new google.maps.Geocoder();
