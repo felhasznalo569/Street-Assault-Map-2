@@ -1,14 +1,20 @@
 $(document).ready(function() {
 	
+	var centerLat = 47.49;
+	var centerLng = 19.04;
+
 	var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
-    center: {lat: -34.397, lng: 150.644}
+    center: {lat: centerLat, lng: centerLng}
 	});
 
 	var marker = new google.maps.Marker({
-		position: {lat: -34.397, lng: 150.644}
+		position: {lat: centerLat, lng: centerLng}
 	});  
 		marker.setMap(map);
+
+	document.getElementById("latitude").value = centerLat;
+	document.getElementById("longitude").value = centerLng;
 	
 	google.maps.event.addListener(map, "click", function (e) {
 
@@ -17,6 +23,9 @@ $(document).ready(function() {
 		
 		console.log(e.latLng.lat())
 		console.log(e.latLng.lng())
+
+		document.getElementById("latitude").value = e.latLng.lat();
+		document.getElementById("longitude").value = e.latLng.lng();
 
 		marker.setPosition(latLng);
 
