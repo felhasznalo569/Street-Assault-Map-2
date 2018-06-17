@@ -9,12 +9,12 @@ $(document).ready(function() {
 	});
 
 	var marker = new google.maps.Marker({
-		position: {lat: centerLat, lng: centerLng}
+		// position: {lat: centerLat, lng: centerLng}
 	});  
 		marker.setMap(map);
 
-	document.getElementById("latitude").value = centerLat;
-	document.getElementById("longitude").value = centerLng;
+	// document.getElementById("latitude").value = centerLat;
+	// document.getElementById("longitude").value = centerLng;
 	
 	google.maps.event.addListener(map, "click", function (e) {
 
