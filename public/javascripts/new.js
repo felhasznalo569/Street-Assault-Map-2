@@ -20,9 +20,6 @@ $(document).ready(function() {
 
     //lat and lng is available in e object
 		var latLng = e.latLng;
-		
-		console.log(e.latLng.lat())
-		console.log(e.latLng.lng())
 
 		document.getElementById("latitude").value = e.latLng.lat();
 		document.getElementById("longitude").value = e.latLng.lng();
@@ -30,6 +27,16 @@ $(document).ready(function() {
 		marker.setPosition(latLng);
 
 	});
+
+	document.getElementById("latitude").addEventListener('change', updateMap);
+	document.getElementById("longitude").addEventListener('change', updateMap);
+
+	function updateMap(){
+
+		var latLngUpdate = new google.maps.LatLng(document.getElementById("latitude").value, document.getElementById("longitude").value);
+
+		marker.setPosition(latLngUpdate);
+	}
 	
   var geocoder = new google.maps.Geocoder();
 
@@ -51,7 +58,7 @@ $(document).ready(function() {
 				// document.getElementById('longitude').value = results[0].geometry.location.lng();
 				
 				document.getElementById('latitude').value = e.latLng.lat();
-		document.getElementById('longitude').value = e.latLng.lng();
+				document.getElementById('longitude').value = e.latLng.lng();
 	    } else {
 	      alert('Geocode was not successful for the following reason: ' + status);
 	    }
