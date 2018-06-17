@@ -29,6 +29,7 @@ router.route('/')
 						id: crimesDB[i]._id.toHexString(),
 						name: crimesDB[i].name,
 						description: crimesDB[i].description,
+						when: crimesDB[i].when,
 						location: crimesDB[i].location
 					})
 				}
@@ -50,6 +51,7 @@ router.route('/crimes')
 		const newCrime = {
 			name: req.body.name,
 			description: req.body.description,
+			when: req.body.when,
 			location: location
 		};
 		const crime = new Crime(newCrime);

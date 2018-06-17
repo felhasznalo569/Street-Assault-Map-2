@@ -5,11 +5,16 @@ $(document).ready(function(){
   };
   
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
+    zoom: 13,
     center: mapcenter
   });
 
- 
+ if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(function (position) {
+         initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+         map.setCenter(initialLocation);
+     });
+ }
 
 
 let markers = [];
@@ -19,9 +24,12 @@ let markers = [];
       lat: crime.location.coordinates[1],
       lng: crime.location.coordinates[0]
     };
-    let wherecrime = crime.when
-    console.log(crime.when)
-
+    let whencrime1 = crime.when
+    let whencrime = 'not known'
+    if(typeof whencrime1 != 'undefined') 
+    {
+      whencrime = whencrime1.substring(0,10)
+    }
     var icon;
 
 
@@ -44,7 +52,10 @@ let markers = [];
             '</div>'+
             crime.name.bold() +
             '<div id="bodyContent">'+
-            'Description: '+ crime.description + '\n' + wherecrime +
+            'Description: '+ crime.description +
+            '</div>'+
+            '<div id="bodyContent">'+
+            'When: ' + whencrime +
             '</div>'+
             '</div>';
 
