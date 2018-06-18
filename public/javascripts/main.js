@@ -43,7 +43,7 @@ let markers = [];
     icon ='Robbery.png'
     }
 
-
+    
 
     var pin = new google.maps.Marker({ position, map, title, icon  });
 

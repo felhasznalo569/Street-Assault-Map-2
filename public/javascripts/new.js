@@ -4,9 +4,16 @@ $(document).ready(function() {
 	var centerLng = 19.04;
 
 	var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
+    zoom: 13,
     center: {lat: centerLat, lng: centerLng}
 	});
+
+	if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(function (position) {
+         initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+         map.setCenter(initialLocation);
+     });
+ 	}
 
 	var marker = new google.maps.Marker({
 		// position: {lat: centerLat, lng: centerLng}
