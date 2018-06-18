@@ -40,10 +40,27 @@ let markers = [];
     icon ='Violence.png'
     }
 
-    if(title == 'Robbery')
+    else if(title == 'Robbery')
     {
     icon ='Robbery.png'
     }
+
+    else if(title == 'Harrassment')
+    {
+    icon ='Harrassment.png'
+    }
+
+    else if(title == 'Vandalism')
+    {
+    icon ='Vandalism.png'
+    }
+
+    else
+    {
+    icon ='Other.png'
+    }
+
+
 
     
 
