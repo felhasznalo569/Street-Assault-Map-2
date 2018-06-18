@@ -30,6 +30,7 @@ router.route('/')
 						name: crimesDB[i].name,
 						description: crimesDB[i].description,
 						when: crimesDB[i].when,
+						timeofday: crimesDB[i].timeofday,
 						location: crimesDB[i].location
 					})
 				}
@@ -52,6 +53,7 @@ router.route('/crimes')
 			name: req.body.name,
 			description: req.body.description,
 			when: req.body.when,
+			timeofday: req.body.timeofday,
 			location: location
 		};
 		const crime = new Crime(newCrime);

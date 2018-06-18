@@ -31,6 +31,8 @@ let markers = [];
       whencrime = whencrime1.substring(0,10)
     }
     var icon;
+    let exactlywhen = crime.timeofday
+    if (typeof exactlywhen == 'undefined') exactlywhen = 'time of day not known'
 
 
     if(title == 'Violence')
@@ -55,7 +57,7 @@ let markers = [];
             'Description: '+ crime.description +
             '</div>'+
             '<div id="bodyContent">'+
-            'When: ' + whencrime +
+            'When: ' + whencrime + ' (' + exactlywhen + ') ' +
             '</div>'+
             '</div>';
 
