@@ -36,25 +36,30 @@
     <form method="POST" action="/crimes">
       <div class="form-group">
         <div class="row">
-          <div class="col-lg-2">
-            <label for="name">Name:</label>
+          <div class="col-lg-1">
+            <label for="name">Name: </label>
             <select class="form-control" name="name" id="name">
               <option value="Robbery">Robbery</option>
               <option value="Violence">Violence</option>
             </select>
           </div>
 
-          <div class="col-lg-2">
+          <div class="col-lg-1">
             <label for="when">Date: </label>
             <input type="date" class="form-control" name="when" id="when">
           </div>
 
-          <div class="col-lg-2">
+          <div class="col-lg-1">
             <label for="time">Time: </label>
-            <input type="time" class="form-control" name="time" id="time">
+            <select class="form-control" name="time" id="time">
+              <option value="Dawn">Dawn (00:01 - 06:00)</option>
+              <option value="Morning">Morning (06:01 - 12:00)</option>
+              <option value="Afternoon">Afternoon (12:01 - 18:00)</option>
+              <option value="Evening">Evening (18:01 - 24:00)</option>
+            </select>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col-lg-9">
             <label for="description">Descriptcion: </label>
             <input type="text" class="form-control" name="description" placeholder="Description" id="description">
           </div>
